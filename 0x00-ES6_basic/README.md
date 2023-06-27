@@ -227,10 +227,10 @@ npm run dev ./tests/101-main.js
 
 
 # :man: Author and Credits.
-This project was done by [SE. Moses Mwangi](https://github.com/MosesSoftEng). Feel free to get intouch with me;
+This project was done by [Bayo Herbert](https://github.com/Herbertkartel). Feel free to get intouch with me;
 
-:iphone: WhatsApp [+254115227963](https://wa.me/254115227963)
+:iphone: WhatsApp [+256703527403](https://wa.me/256703527403)
 
-:email: Email [moses.soft.eng@gmail.com](mailto:moses.soft.eng@gmail.com)
+:email: Email [bayoherbert3@gmail.com](mailto:moses.soft.eng@gmail.com)
 
 :thumbsup: A lot of thanks to [ALX-Africa Software Engineering](https://www.alxafrica.com/) program for the project requirements.
