@@ -1,10 +1,21 @@
-/* eslint-disable */
-const { expect } = require('chai');
-const getPaymentTokenFromAPI = require('./6-payment_token');
+#!/usr/bin/env node
 
-describe('getPaymentTokenFromAPI', (done) => {
-  it('tests an async resolve', () => getPaymentTokenFromAPI(true)
-    .then((success) => {
-      expect(success).to.eql({ data: 'Successful response from the API' });
-    }));
+/* eslint-disable */
+
+const sinon = require('sinon');
+const { expect } = require('chai');
+const { getPaymentTokenFromAPI } = require('./6-payment_token');
+
+describe('getPaymentTokenFromAPI', () => {
+  it('getPaymentTokenFromAPI', (done) => {
+    getPaymentTokenFromAPI(true)
+      .then((resp) => {
+        expect(resp.data).to.be.string;
+        expect(resp.data).to.equals('Successful response from the API');
+      });
+    done()
+      .catch((error) => {
+        done(error);
+      });
+  });
 });

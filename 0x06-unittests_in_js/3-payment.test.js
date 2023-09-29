@@ -1,26 +1,16 @@
+#!/usr/bin/env node
+
 /* eslint-disable */
 const sinon = require('sinon');
-const { expect } = require('chai');
-const sendPaymentRequestToApi = require('./3-payment');
 const Utils = require('./utils');
+const sendPaymentRequestToApi = require('./3-payment')
+describe('sendPaymentRequestToApi', () => {
+  it('sendPaymentRequestToApi uses the calculateNumber method of Utils', () => {
+    const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
 
-describe('test sendPaymentRequestToApi flow', () => {
-  const sendPaymentSpy = sinon.spy(sendPaymentRequestToApi);
-  const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
-  const consoleLogSpy = sinon.spy(console, 'log');
-
-  const totalAmount = sendPaymentRequestToApi(100, 20);
-
-  it('validate whether the sendPaymentRequestToApi reieved the exact inputs sent', () => {
-    expect(sendPaymentSpy.calledWithExactly(100, 20));
-  });
-  it('validate whether the calculateNumber method received the right inputs', () => {
-    expect(calculateNumberSpy.calledWithExactly('SUM', 100, 20));
-  });
-  it('validate return value from total sendPaymentRequestToApi', () => {
-    expect(totalAmount).to.be.equal(120);
-  });
-  it('validate whether the console.log executed and printed the right string', () => {
-    expect(consoleLogSpy.calledWithExactly('The total is: 120'));
+    sendPaymentRequestToApi(100, 20);
+    sinon.assert.calledOnce(calculateNumberSpy)
+    sinon.assert.calledWith(calculateNumberSpy, 'SUM', 100, 20)
+    calculateNumberSpy.restore()
   });
 });

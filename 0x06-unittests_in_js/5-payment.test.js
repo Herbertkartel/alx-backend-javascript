@@ -1,30 +1,35 @@
+#!/usr/bin/env node
+
 /* eslint-disable */
-const { spy } = require('sinon');
-const { expect } = require('chai');
-const sendPaymentRequestToApi = require('./3-payment');
+const sinon = require('sinon');
 const Utils = require('./utils');
+const sendPaymentRequestToApi = require('./5-payment');
 
-describe('test sendPaymentRequestToApi flow', () => {
-  let calculateNumberSpy;
-  let consoleLogSpy;
-
+describe('sendPaymentRequestToApi', () => {
+  let consoleSpy;
   beforeEach(() => {
-    calculateNumberSpy = spy(Utils, 'calculateNumber');
-    consoleLogSpy = spy(console, 'log');
-  })
-  afterEach(() => {
-    calculateNumberSpy.restore();
-    consoleLogSpy.restore();
+    if (!consoleSpy){
+      consoleSpy = sinon.spy(console)
+    }
   })
 
-  it('Validate hook test v1 (100, 20) => {}', () => {
+  afterEach(() => {
+    consoleSpy.log.resetHistory()
+  })
+  
+  it('sendPaymentRequestToApi(100, 20) logs the correct value to console', () => {
+
     sendPaymentRequestToApi(100, 20);
-    expect(consoleLogSpy.calledWithExactly('The total is: 120'));
-    expect(consoleLogSpy.calledOnce);
-  })
-  it('Validate hook test v2 (10, 10) => {}', () => {
+
+    sinon.assert.calledOnce(consoleSpy.log);
+    sinon.assert.calledWithExactly(consoleSpy.log, 'The total is: 120');
+  });
+
+  it('sendPaymentRequestToApi(10, 10) logs the correct value to console', () => {
+
     sendPaymentRequestToApi(10, 10);
-    expect(consoleLogSpy.calledWithExactly('The total is: 20'));
-    expect(consoleLogSpy.calledOnce);
-  })
+
+    sinon.assert.calledOnce(consoleSpy.log);
+    sinon.assert.calledWithExactly(consoleSpy.log, 'The total is: 20');
+  });
 });

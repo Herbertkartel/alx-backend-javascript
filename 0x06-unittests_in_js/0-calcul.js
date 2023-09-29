@@ -1,3 +1,7 @@
-// A simple function that returns the sum of two input params
-const calculateNumber = (a, b) => Math.round(a) + Math.round(b);
-module.exports = calculateNumber;
+#!/usr/bin/node
+
+/* simple function to add  two numbers */
+
+module.exports = function calculateNumber(numA, numB){
+    return (Math.round(numA) + Math.round(numB))
+}

@@ -1,23 +1,26 @@
-/* eslint-disable */
-// Huehue *casually disables eslint*
-const assert = require('assert').strict;
-const calculateNumber = require('./0-calcul');
+/* unittest for the application */
 
-describe('calculateNumber Test', () => {
-  it('test float and int inputs', () => {
-    const floatPlusInt = calculateNumber(1, 1.5);
-    assert.equal(floatPlusInt, 3);
-  });
-  it('test two float inputs', () => {
-    const floatPlusFloat = calculateNumber(1.5, 1.5);
-    assert.equal(floatPlusFloat, 4);
-  });
-  it('test int and str inputs', () => {
-    const intPlusStr = calculateNumber('a', 1);
-    assert.equal(intPlusStr, NaN);
-  });
-  it('test two string inputs', () => {
-    const strPlusStr = calculateNumber('a', 'b');
-    assert.equal(strPlusStr, NaN);
-  });
-});
+const assert = require('assert')
+const calculateNumber = require('./0-calcul')
+
+
+describe('Testing 0-calcul module', () => {
+    it('Adding two numbers', () => {
+        assert.strictEqual(calculateNumber(3, 7), 10)
+    })
+    it('Rouding functionality', () => {
+        assert.strictEqual(calculateNumber(2.1, 4), 6)
+    })
+    it('First argument is a double', () => {
+        assert.strictEqual(calculateNumber(3.5, 2), 6)
+    })
+    it('Second argument is a double', () => {
+        assert.strictEqual(calculateNumber(4, 9.0), 13)
+    })
+    it('Both arguments are doubles', () => {
+        assert.strictEqual(calculateNumber(2.1, 2.1), 4)
+    })
+    it('Both arguments are integers', () => {
+        assert.strictEqual(calculateNumber(2, 4), 6)
+    })
+})

@@ -1,11 +1,25 @@
-// A simple function that returns the sum of two input params
-/* This looks way too neat to be destroyed by eslint */
-/* eslint-disable */
-const calculateNumber = (type, a, b) => {
-    const ops = {'SUM'     : (a, b) => Math.round(a) + Math.round(b),
-                 'SUBTRACT': (a, b) => Math.round(a) - Math.round(b),
-                 'DIVIDE'  : (a, b) => { if (Math.round(b) !== 0) return Math.round(a) / Math.round(b)
-                                         return 'Error'; }};
-    return ops[type](a, b);
-};
+#!/usr/bin/env node
+
+/* eslint-disable consistent-return */
+function calculateNumber(type, numA, numB) {
+  try {
+    const roundedA = Math.round(numA);
+    const roundedB = Math.round(numB);
+    if (type === 'SUM') {
+      return roundedA + roundedB;
+    } if (type === 'MULTIPLY') {
+      return roundedA * roundedB;
+    } if (type === 'SUBTRACT') {
+      return roundedA - roundedB;
+    } if (type === 'DIVIDE') {
+      if (roundedB === 0) {
+        return 'Error';
+      }
+      return (roundedA / roundedB);
+    }
+  } catch (err) {
+    return (err);
+  }
+}
+
 module.exports = calculateNumber;
