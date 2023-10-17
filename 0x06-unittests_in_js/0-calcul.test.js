@@ -1,26 +1,25 @@
-/* unittest for the application */
+const assert = require('assert');
+const calculateNumber = require('./0-calcul.js');
 
-const assert = require('assert')
-const calculateNumber = require('./0-calcul')
+describe('calculateNumber', () => {
+  it('round the first argument', () => {
+    assert.equal(calculateNumber(1.0, 0), 1);
+    assert.equal(calculateNumber(1.3, 0), 1);
+    assert.equal(calculateNumber(1.7, 0), 2);
+  });
 
+  it('round the second argument', () => {
+    assert.equal(calculateNumber(0, 1.0), 1);
+    assert.equal(calculateNumber(0, 1.3), 1);
+    assert.equal(calculateNumber(0, 1.7), 2);
+  });
 
-describe('Testing 0-calcul module', () => {
-    it('Adding two numbers', () => {
-        assert.strictEqual(calculateNumber(3, 7), 10)
-    })
-    it('Rouding functionality', () => {
-        assert.strictEqual(calculateNumber(2.1, 4), 6)
-    })
-    it('First argument is a double', () => {
-        assert.strictEqual(calculateNumber(3.5, 2), 6)
-    })
-    it('Second argument is a double', () => {
-        assert.strictEqual(calculateNumber(4, 9.0), 13)
-    })
-    it('Both arguments are doubles', () => {
-        assert.strictEqual(calculateNumber(2.1, 2.1), 4)
-    })
-    it('Both arguments are integers', () => {
-        assert.strictEqual(calculateNumber(2, 4), 6)
-    })
-})
+  it('should return the right number', () => {
+    assert.equal(calculateNumber(1.3, 0), 1);
+    assert.equal(calculateNumber(0, 1.2), 1);
+    assert.equal(calculateNumber(1.3, 1.3), 2);
+    assert.equal(calculateNumber(1.7, 1.2), 3);
+    assert.equal(calculateNumber(1.3, 1.8), 3);
+    assert.equal(calculateNumber(1.6, 1.8), 4);
+  });
+});

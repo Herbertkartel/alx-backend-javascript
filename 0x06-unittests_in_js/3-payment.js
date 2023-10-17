@@ -1,11 +1,8 @@
-#!/usr/bin/env node
+const Utils = require('./utils');
 
-/* eslint-disable */
-
-const Utils = require('./utils')
-function sendPaymentRequestToApi(totalAmount, totalShiping) {
-  const result = Utils.calculateNumber('SUM', totalAmount, totalShiping);
-  console.log(`The total is: ${result}`);
+function sendPaymentRequestToApi(totalAmount, totalShipping) {
+    const result = Utils.calculateNumber('SUM', totalAmount, totalShipping);
+    console.log(`The total is: ${result}`);
 }
-
+  
 module.exports = sendPaymentRequestToApi;
